@@ -55,12 +55,8 @@ $(function() {
     /* Write a new test suite named "The menu" */
 	describe('The menu', () => {
 
-		var htmlElement_Body = $('body');
+		var htmlElementBody = $('body');
 		var isMenuHidden;
-
-		beforeEach( () => {
-			isMenuHidden = htmlElement_Body.hasClass('menu-hidden');
-		});
 		
         /* Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
@@ -68,6 +64,7 @@ $(function() {
          * hiding/showing of the menu element.
          */
 		it('menu element is hidden by default', () => {
+			isMenuHidden = htmlElementBody.hasClass('menu-hidden');
 			expect(isMenuHidden).toBe(true);
 		});
 
@@ -78,18 +75,15 @@ $(function() {
          */
 		it('menu changes visibility when icon clicked', () => {
 
-			var htmlElement_MenuIcon = $('.menu-icon-link');
+			var htmlElementMenuIcon = $('.menu-icon-link');
 
-			if(isMenuHidden) {
-				htmlElement_MenuIcon.click();
-				isMenuHidden = htmlElement_Body.hasClass('menu-hidden');
-				expect(isMenuHidden).toBe(false);
-			}
-			else {
-				htmlElement_MenuIcon.click();
-				isMenuHidden = htmlElement_Body.hasClass('menu-hidden');
-				expect(isMenuHidden).toBe(true);				
-			}
+			htmlElementMenuIcon.click();
+			isMenuHidden = htmlElementBody.hasClass('menu-hidden');
+			expect(isMenuHidden).toBe(false);
+
+			htmlElementMenuIcon.click();
+			isMenuHidden = htmlElementBody.hasClass('menu-hidden');
+			expect(isMenuHidden).toBe(true);				
 		});
 	});
 
@@ -107,9 +101,9 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 		it('loadFeed() completes and at least one element is in container', () => {
-			var htmlElement_Entries = $('.feed .entry');
+			var htmlElementEntries = $('.feed .entry');
 
-			expect(htmlElement_Entries.length).toBeGreaterThan(0);
+			expect(htmlElementEntries.length).toBeGreaterThan(0);
 		});
 	});
 
