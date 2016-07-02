@@ -8,6 +8,11 @@
 
 ## Getting started
 
+The Jasmine unit tests are found in 
+```bash
+  $> ../your-project-folder/jasmine/spec/feedreader.js
+  ```
+
 ### View the page and test results.
 
 Open index.html in your webbrowser
