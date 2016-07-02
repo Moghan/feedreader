@@ -1,0 +1,37 @@
+{
+    "env": {
+        "browser": true,
+        "jquery": true,
+        "jasmine": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "rules": {
+        "no-unused-vars": [
+            "error", { "vars": "local", "args": "after-used" }
+        ],
+        "indent": [
+            "error",
+            "tab"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
+    },
+    "globals": {
+        "allFeeds": false, 
+        "google" : false,
+        "loadFeed" : false
+    }
+}
