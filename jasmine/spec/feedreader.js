@@ -140,7 +140,10 @@ $(function() {
 		it('changes content when new feed is loaded', (done) => {
 			var newContent = $('.entry h2')[0].textContent;
 
+			// Q: This impleis the test fail when actually it should say the test can´t run.
+			// Any suggestions on alternative?
 			expect(allFeeds.length).toBeGreaterThan(1);
+			
 			expect(oldContent).not.toEqual(newContent);
 			done();
 		});
