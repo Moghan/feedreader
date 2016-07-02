@@ -106,11 +106,10 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-		it('loadFeed() completes and at least one element is in container', (done) => {
-			var htmlElement_Entries = $('.entry');
+		it('loadFeed() completes and at least one element is in container', () => {
+			var htmlElement_Entries = $('.feed .entry');
 
 			expect(htmlElement_Entries.length).toBeGreaterThan(0);
-			done();
 		});
 	});
 
@@ -132,12 +131,11 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-		it('changes content when new feed is loaded', (done) => {
+		it('changes content when new feed is loaded', () => {
 			var newContent = $('.entry h2')[0].textContent;
 
 			expect(allFeeds.length).toBeGreaterThan(1);
 			expect(oldContent).not.toEqual(newContent);
-			done();
 		});
 	});
 }());
