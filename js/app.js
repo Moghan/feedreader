@@ -11,11 +11,11 @@ var allFeeds = [
 	{
 		name: 'Udacity Blog',
 		url: 'http://blog.udacity.com/feed'
-	}, { // Lost some hours before finding on the forum
+	},/* { // Lost some hours before finding on the forum
 		 // this link was causing the "status of 500 (ETIMEDOUT)" respond.
 		name: 'CSS Tricks',
 		url: 'http://css-tricks.com/feed'
-	}, {
+	}, */{
 		name: 'HTML5 Rocks',
 		url: 'http://feeds.feedburner.com/html5rocks'
 	}, {

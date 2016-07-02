@@ -52,8 +52,15 @@ $(function() {
 		});
 	});
 
-    /* TODO: Write a new test suite named "The menu" */
+    /* Write a new test suite named "The menu" */
 	describe('The menu', () => {
+
+		var htmlElement_Body = $('body');
+		var isMenuHidden;
+
+		beforeEach( () => {
+			isMenuHidden = htmlElement_Body.hasClass('menu-hidden');
+		});
 		
         /* Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
@@ -61,7 +68,6 @@ $(function() {
          * hiding/showing of the menu element.
          */
 		it('menu element is hidden by default', () => {
-			var isMenuHidden = $('body').hasClass('menu-hidden');
 			expect(isMenuHidden).toBe(true);
 		});
 
@@ -72,29 +78,18 @@ $(function() {
          */
 		it('menu changes visibility when icon clicked', () => {
 
-			var htmlElement_SlideMenu = $('.slide-menu');
 			var htmlElement_MenuIcon = $('.menu-icon-link');
-			var wasVisibleBeforeClicked;
-			
-			// Assuming menu will dissapear upwards or to the left, or using the ccs style "display = none".
-			var checkIfVisible = function () {
-				return (-htmlElement_SlideMenu.offset().left <= htmlElement_SlideMenu.width())
-					&& (-htmlElement_SlideMenu.offset().top <= htmlElement_SlideMenu.height())
-					&& (htmlElement_SlideMenu.css('display') !== 'none');
-			};
 
-			// With transition on, the slide-menu has not entered the view when test is made.
-			htmlElement_SlideMenu.addClass('notransition');
-
-			wasVisibleBeforeClicked = checkIfVisible();
-			htmlElement_MenuIcon.click();
-			expect(wasVisibleBeforeClicked).not.toBe(checkIfVisible());
-
-			wasVisibleBeforeClicked = checkIfVisible();
-			htmlElement_MenuIcon.click();
-			expect(wasVisibleBeforeClicked).not.toBe(checkIfVisible());
-
-			htmlElement_SlideMenu.removeClass('notransition');
+			if(isMenuHidden) {
+				htmlElement_MenuIcon.click();
+				isMenuHidden = htmlElement_Body.hasClass('menu-hidden');
+				expect(isMenuHidden).toBe(false);
+			}
+			else {
+				htmlElement_MenuIcon.click();
+				isMenuHidden = htmlElement_Body.hasClass('menu-hidden');
+				expect(isMenuHidden).toBe(true);				
+			}
 		});
 	});
 
@@ -140,10 +135,7 @@ $(function() {
 		it('changes content when new feed is loaded', (done) => {
 			var newContent = $('.entry h2')[0].textContent;
 
-			// Q: This impleis the test fail when actually it should say the test can´t run.
-			// Any suggestions on alternative?
 			expect(allFeeds.length).toBeGreaterThan(1);
-			
 			expect(oldContent).not.toEqual(newContent);
 			done();
 		});
